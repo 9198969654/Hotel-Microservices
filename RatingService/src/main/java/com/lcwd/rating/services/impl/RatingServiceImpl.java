@@ -7,30 +7,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class RatingServiceImpl implements RatingService {
     @Autowired
-    private RatingRepository ratingRepository;
+    private RatingRepository repository;
 
 
     @Override
     public Rating create(Rating rating) {
-        return ratingRepository.save(rating);
+       // String hotelId =  UUID.randomUUID().toString();
+        String ratingId = UUID.randomUUID().toString();
+        rating.setRatingId(ratingId);
+        return repository.save(rating);
     }
 
     @Override
     public List<Rating> getRatings() {
-        return ratingRepository.findAll();
+        return repository.findAll();
     }
 
     @Override
     public List<Rating> getRatingByUserId(String userId) {
-        return ratingRepository.findByUserId(userId);
+        return repository.findByUserId(userId);
     }
 
     @Override
     public List<Rating> getRatingByHotelId(String hotelId) {
-        return ratingRepository.findByHotelId(hotelId);
+        return repository.findByHotelId(hotelId);
     }
 }

@@ -8,29 +8,27 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @RestController
 @RequestMapping("/hotels")
 public class HotelController {
     @Autowired
     private HotelService hotelService;
 
-    //create
+    // Create a new hotel
     @PostMapping
-    public ResponseEntity<Hotel> createHotel(@RequestBody Hotel hotel){
+    public ResponseEntity<Hotel> createHotel(@RequestBody Hotel hotel) {
         return ResponseEntity.status(HttpStatus.CREATED).body(hotelService.create(hotel));
     }
-    //get single
 
+    // Get a single hotel by ID
     @GetMapping("/{hotelId}")
-    public ResponseEntity<Hotel> createHotel(@PathVariable String hotelId){
-        return ResponseEntity.status(HttpStatus.OK).body(hotelService.get(hotelId));
-    }
+    public ResponseEntity<Hotel> getHotelById(@PathVariable String hotelId) {
 
-    //get All
+        return ResponseEntity.status(HttpStatus.CREATED).body(hotelService.get(hotelId));
+    }
+    // Get all hotels
     @GetMapping
-    public ResponseEntity<List<Hotel>> getAll(){
-        return ResponseEntity.ok(hotelService.getAll());
+    public ResponseEntity<List<Hotel>> getAll() {
+       return ResponseEntity.ok(hotelService.getAll());
     }
-
 }

@@ -14,20 +14,13 @@ import java.util.UUID;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private final UserRepository userRepository;
-
-    @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
+    private  UserRepository userRepository;
 
     @Override
     public User saveUser(User user) {
-
         //generate unique userid
         String randomUserId =  UUID.randomUUID().toString();
-        user.setUserId(randomUserId);
+       user.setUserId(randomUserId);
         return userRepository.save(user);
     }
 
