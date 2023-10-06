@@ -8,7 +8,7 @@ public class RatingServiceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(RatingServiceApplication.class, args);
-		System.out.println("Hotel Rating System");
+
 	}
 
 }
