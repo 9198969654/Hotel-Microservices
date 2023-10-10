@@ -30,5 +30,36 @@ public class User {
     @Transient
     private List<Rating> ratings = new ArrayList<>();
 
+    // Builder class
+    public static class Builder {
+        private User user = new User();
+
+        public Builder email(String email) {
+            user.email = email;
+            return this;
+        }
+        public Builder name(String name) {
+            user.name = name;
+            return this;
+        }
+
+        public Builder about(String about) {
+            user.about = about;
+            return this;
+        }
+
+        public Builder userId(String userId) {
+            user.userId = userId;
+            return this;
+        }
+
+        public User build() {
+            return user;
+        }
+    }
+    // Static method to create a new builder instance
+    public static Builder builder() {
+        return new Builder();
+    }
 
 }
